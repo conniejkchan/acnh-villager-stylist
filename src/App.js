@@ -1,25 +1,39 @@
 import React from 'react';
-import logo from './logo.svg';
+import styled from 'styled-components';
 import './App.css';
 
-function App() {
+import villagersData from './data/villagers.json';
+import ItemsData from "./data/items.json";
+
+const App = ({}) => {
+
+  let villagerNameList = []
+  let villagerPhotoList = []
+
+  for(let i=0; i<villagersData.length; i++){
+      villagerNameList[i] = villagersData[i].name
+  }
+
+  for(let i=0; i<villagersData.length; i++){
+    villagerPhotoList[i] = villagersData[i].photoImage
+  }
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <h1>Animal Crossing New Horizon Villager Stylist</h1>
+    {villagersData.map(villager => {
+        return (
+          <>
+          <div>
+            <h2>{villager.name}</h2>
+            <img src={villager.photoImage} />
+          </div>
+          </>
+        );
+    })}
+  
+    </>
   );
 }
 
