@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background-image: url("img/ac-background-5.jpg");
+}
 .App {
   text-align: center;
 }
