@@ -4,13 +4,17 @@ body {
   font-family: 'Nunito', sans-serif;
   background-image: url("img/ac-background-5.jpg");
 }
+
 .App {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.header {
+  text-align: center;
+}
+
+.searchVillager {
+  text-align: center;
 }
 
 @media (prefers-reduced-motion: no-preference) {
