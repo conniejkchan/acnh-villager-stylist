@@ -1,5 +1,15 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Animal Crossing New Horizon Villager Stylist
+https://conniejkchan.github.io/acnh-villager-stylist/  
+Type in villager name  
+Typ in Item name  
+Check compatibility
+
+Each villager has their favorite 2 clothing styles and 2 colors they prefer.  
+
+Use this app to help verify if the gift aligns with the villager's clothing style and color preferences.  
+
 ## Available Scripts
 
 In the project directory, you can run:
