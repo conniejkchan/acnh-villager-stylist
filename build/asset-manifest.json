@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/acnh-villager-stylist/static/css/main.bbc9107f.chunk.css",
-    "main.js": "/acnh-villager-stylist/static/js/main.fb3039c8.chunk.js",
-    "main.js.map": "/acnh-villager-stylist/static/js/main.fb3039c8.chunk.js.map",
+    "main.js": "/acnh-villager-stylist/static/js/main.7dbb3d95.chunk.js",
+    "main.js.map": "/acnh-villager-stylist/static/js/main.7dbb3d95.chunk.js.map",
     "runtime-main.js": "/acnh-villager-stylist/static/js/runtime-main.212f0e7c.js",
     "runtime-main.js.map": "/acnh-villager-stylist/static/js/runtime-main.212f0e7c.js.map",
     "static/js/2.9a4dd38e.chunk.js": "/acnh-villager-stylist/static/js/2.9a4dd38e.chunk.js",
     "static/js/2.9a4dd38e.chunk.js.map": "/acnh-villager-stylist/static/js/2.9a4dd38e.chunk.js.map",
     "index.html": "/acnh-villager-stylist/index.html",
-    "precache-manifest.66fab0392bdddc35701aaa03b65dfcdd.js": "/acnh-villager-stylist/precache-manifest.66fab0392bdddc35701aaa03b65dfcdd.js",
+    "precache-manifest.8861dabb05100db6ee920268ffa7204c.js": "/acnh-villager-stylist/precache-manifest.8861dabb05100db6ee920268ffa7204c.js",
     "service-worker.js": "/acnh-villager-stylist/service-worker.js",
     "static/css/main.bbc9107f.chunk.css.map": "/acnh-villager-stylist/static/css/main.bbc9107f.chunk.css.map",
     "static/js/2.9a4dd38e.chunk.js.LICENSE.txt": "/acnh-villager-stylist/static/js/2.9a4dd38e.chunk.js.LICENSE.txt",
@@ -18,6 +18,6 @@
     "static/js/runtime-main.212f0e7c.js",
     "static/js/2.9a4dd38e.chunk.js",
     "static/css/main.bbc9107f.chunk.css",
-    "static/js/main.fb3039c8.chunk.js"
+    "static/js/main.7dbb3d95.chunk.js"
   ]
 }

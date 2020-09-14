@@ -145,7 +145,7 @@ const App = ({}) => {
       </Grid>
       <Grid item xs={6}>
         <div className="searchItem">
-          <h2>{itemName}</h2>
+          <h2>Item: {itemName}</h2>
           <img src={villagerPhoto} />
         </div>
       </Grid>
