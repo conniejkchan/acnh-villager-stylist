@@ -8,6 +8,10 @@ import SearchIcon from '@material-ui/icons/Search';
 import TextField from '@material-ui/core/TextField';
 import IconButton from '@material-ui/core/IconButton';
 import InputAdornment from "@material-ui/core/InputAdornment";
+import InputLabel from '@material-ui/core/InputLabel';
+import Select from '@material-ui/core/Select';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormControl from '@material-ui/core/FormControl';
 
 import villagersData from './data/villagers.json';
 import itemsData from "./data/items.json";
@@ -31,6 +35,10 @@ const useStyles = makeStyles((theme) => ({
     height: 28,
     margin: 4,
   },
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: 120,
+  }
 
 }));
 
@@ -43,7 +51,9 @@ const App = ({}) => {
 
   const[itemName, setItemName] = useState('')
   const[itemPhoto, setItemPhoto] = useState('')
-  const[itemVariation,setItemVariation] = useState([])
+  const[itemVariation,setItemVariation] = useState('')
+  const[itemVariationList,setItemVariationList] = useState([])
+  const[itemPropertyList,setItemPropertyList] = useState([])
 
 
   const classes = useStyles();
@@ -65,10 +75,35 @@ const App = ({}) => {
     itemsData.map(item => {
       if(e.target.value.toLowerCase() === item.name.toLowerCase()) {
         setItemName(item.name)
+        const variants = item.variants
+        setItemPropertyList(variants)
+        const variantList = []
+        variants.map(variant => {
+          variantList.push(variant.variation)
+        })
+        setItemVariationList(variantList)
         //setItemPhoto(item)
       }
     })
   }
+
+  const getItemVariation = e => {
+    e.preventDefault()
+    itemsData.map(item => {
+    // check item
+      if(itemName === item.name) {
+        // FIXME: variant list already set previously, assigns the wrong color variant and doesnt change photo
+        itemPropertyList.map( obj => {
+          // reset selection
+          if(e.target.value === obj.variation)
+          setItemVariation(e.target.value)
+          setItemPhoto(obj.closetImage)
+          // also set up colors and elegant fields
+        })
+      }
+    })
+    console.log(itemVariation)
+  };
 
   return (
     <>
@@ -96,7 +131,7 @@ const App = ({}) => {
           />
         </form>
       </Grid>
-      <Grid item xs={6}>
+      <Grid item xs={3}>
         <form noValidate autoComplete="off">
           <TextField
             className={classes.input}
@@ -116,6 +151,22 @@ const App = ({}) => {
             }}
           />
         </form>
+      </Grid>
+      <Grid item xs={3}>
+      <FormControl className={classes.formControl}>
+        <InputLabel>Item Variation</InputLabel>
+        <Select
+          value={itemVariation}
+          onChange={getItemVariation}
+        >
+            <MenuItem value="">None</MenuItem>
+            {itemVariationList.map(option => {
+                return (
+                  <MenuItem value={option}>{option}</MenuItem>
+                );
+              })}   
+        </Select>
+        </FormControl>
       </Grid>
       <Grid item xs={6}>
         <div className="searchVillager">
@@ -146,7 +197,7 @@ const App = ({}) => {
       <Grid item xs={6}>
         <div className="searchItem">
           <h2>Item: {itemName}</h2>
-          <img src={villagerPhoto} />
+          <img src={itemPhoto} />
         </div>
       </Grid>
     </Grid>
