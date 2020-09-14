@@ -88,21 +88,38 @@ const App = ({}) => {
   }
 
   const getItemVariation = e => {
-    e.preventDefault()
+    // FIXME: have to search item with variant options first before items with no variants like orange hat
+    //e.preventDefault()
     itemsData.map(item => {
     // check item
       if(itemName === item.name) {
         // FIXME: variant list already set previously, assigns the wrong color variant and doesnt change photo
+        console.log(itemPropertyList)
         itemPropertyList.map( obj => {
           // reset selection
-          if(e.target.value === obj.variation)
-          setItemVariation(e.target.value)
-          setItemPhoto(obj.closetImage)
-          // also set up colors and elegant fields
+          if(e.target.value === obj.variation) {
+            setItemVariation(e.target.value)
+            setItemPhoto(obj.closetImage)
+            console.log(itemVariation)
+            console.log(itemPhoto)
+            // also set up colors and elegant fields        
+          }
+          else{
+            console.log('what to do in else statement')
+          }
+
         })
+        // for(let i = 0; i < itemPropertyList.length - 1; i++) {
+        //   if(e.target.value === itemPropertyList[i].variation) {
+        //     setItemVariation(e.target.value)
+        //     setItemPhoto(itemPropertyList[i].closetImage)
+        //     break;
+        //   }
+        // }
+ 
       }
     })
-    console.log(itemVariation)
+
   };
 
   return (
@@ -157,7 +174,7 @@ const App = ({}) => {
         <InputLabel>Item Variation</InputLabel>
         <Select
           value={itemVariation}
-          onChange={getItemVariation}
+          onClick={getItemVariation}
         >
             <MenuItem value="">None</MenuItem>
             {itemVariationList.map(option => {
