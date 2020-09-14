@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/acnh-villager-stylist/precache-manifest.66fab0392bdddc35701aaa03b65dfcdd.js"
+  "/acnh-villager-stylist/precache-manifest.8861dabb05100db6ee920268ffa7204c.js"
 );
 
 self.addEventListener('message', (event) => {
