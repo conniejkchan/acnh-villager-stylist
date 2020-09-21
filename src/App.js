@@ -159,29 +159,21 @@ const App = ({}) => {
         itemPropertyList.map( obj => {
           // reset selection
 
-          if(e.target.value === obj.variation) {
+          if(e.target.value === obj.variation || obj.variation == null) {
             setItemVariation(e.target.value)
             setItemPhoto(obj.closetImage)
-            console.log(itemVariation)
-            console.log(itemPhoto)
-            // also set up colors and elegant fields        
+            setItemColors(obj.colors)
+            // also set up colors fields        
           }
-          else if(obj.variation == null){
-            // only one variation
-            // disable 
-            setItemVariation(e.target.value)
-            setItemPhoto(obj.closetImage)
-          }
+          // else if(obj.variation == null){
+          //   // only one variation
+          //   // disable the variation select
+          //   setItemVariation(e.target.value)
+          //   setItemPhoto(obj.closetImage)
+          //   setItemColors(obj.colors)
+          // }
 
         })
-        // for(let i = 0; i < itemPropertyList.length - 1; i++) {
-        //   if(e.target.value === itemPropertyList[i].variation) {
-        //     setItemVariation(e.target.value)
-        //     setItemPhoto(itemPropertyList[i].closetImage)
-        //     break;
-        //   }
-        // }
- 
       }
     })
 
@@ -282,7 +274,7 @@ const App = ({}) => {
           <img src={itemPhoto} />
           <h3>Style: {itemStyle}</h3>
           <h3>Colors:</h3>
-          {villagerColors.map(color => {
+          {itemColors.map(color => {
               return (
                 <>
                   <li>
