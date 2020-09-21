@@ -1,23 +1,23 @@
 {
   "files": {
     "main.css": "/acnh-villager-stylist/static/css/main.bbc9107f.chunk.css",
-    "main.js": "/acnh-villager-stylist/static/js/main.fe63f109.chunk.js",
-    "main.js.map": "/acnh-villager-stylist/static/js/main.fe63f109.chunk.js.map",
+    "main.js": "/acnh-villager-stylist/static/js/main.48a6fda2.chunk.js",
+    "main.js.map": "/acnh-villager-stylist/static/js/main.48a6fda2.chunk.js.map",
     "runtime-main.js": "/acnh-villager-stylist/static/js/runtime-main.212f0e7c.js",
     "runtime-main.js.map": "/acnh-villager-stylist/static/js/runtime-main.212f0e7c.js.map",
-    "static/js/2.18f941c9.chunk.js": "/acnh-villager-stylist/static/js/2.18f941c9.chunk.js",
-    "static/js/2.18f941c9.chunk.js.map": "/acnh-villager-stylist/static/js/2.18f941c9.chunk.js.map",
+    "static/js/2.63d6529b.chunk.js": "/acnh-villager-stylist/static/js/2.63d6529b.chunk.js",
+    "static/js/2.63d6529b.chunk.js.map": "/acnh-villager-stylist/static/js/2.63d6529b.chunk.js.map",
     "index.html": "/acnh-villager-stylist/index.html",
-    "precache-manifest.b88c2993130d7c9e88aa4b2ff9077292.js": "/acnh-villager-stylist/precache-manifest.b88c2993130d7c9e88aa4b2ff9077292.js",
+    "precache-manifest.633ec1769077b50f128ce2b784c2f7db.js": "/acnh-villager-stylist/precache-manifest.633ec1769077b50f128ce2b784c2f7db.js",
     "service-worker.js": "/acnh-villager-stylist/service-worker.js",
     "static/css/main.bbc9107f.chunk.css.map": "/acnh-villager-stylist/static/css/main.bbc9107f.chunk.css.map",
-    "static/js/2.18f941c9.chunk.js.LICENSE.txt": "/acnh-villager-stylist/static/js/2.18f941c9.chunk.js.LICENSE.txt",
+    "static/js/2.63d6529b.chunk.js.LICENSE.txt": "/acnh-villager-stylist/static/js/2.63d6529b.chunk.js.LICENSE.txt",
     "static/media/App.css": "/acnh-villager-stylist/static/media/ac-background-5.f7491e94.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.212f0e7c.js",
-    "static/js/2.18f941c9.chunk.js",
+    "static/js/2.63d6529b.chunk.js",
     "static/css/main.bbc9107f.chunk.css",
-    "static/js/main.fe63f109.chunk.js"
+    "static/js/main.48a6fda2.chunk.js"
   ]
 }
