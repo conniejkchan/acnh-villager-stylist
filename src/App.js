@@ -12,6 +12,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
+import Autocomplete from '@material-ui/lab/Autocomplete';
 
 import villagersData from './data/villagers.json';
 import itemsData from "./data/items.json";
@@ -58,7 +59,7 @@ const App = ({}) => {
 
   const classes = useStyles();
 
-  // show villager pic and name
+  // input -> show villager pic and name
   const getVillager = e => {
     villagersData.map(villager => {
       if(e.target.value.toLowerCase() === villager.name.toLowerCase()) {
@@ -67,6 +68,26 @@ const App = ({}) => {
         setVillagerNameColor(villager.bubbleColor)
         setVillagerColors(villager.colors)
         setVillagerStyles(villager.styles)
+      }
+    })
+  }
+
+  // select -> show villager pic and name
+  const selectVillager = (event, value) => {
+    setVillagerName(value)
+    villagersData.map(villager => {
+      console.log(value)
+      if(value !== null && value.toLowerCase() === villager.name.toLowerCase()) {
+        setVillagerPhoto(villager.photoImage)
+        setVillagerNameColor(villager.bubbleColor)
+        setVillagerColors(villager.colors)
+        setVillagerStyles(villager.styles)
+      }
+      else if(value === null ) {
+        setVillagerPhoto('')
+        setVillagerNameColor('')
+        setVillagerColors([])
+        setVillagerStyles([])
       }
     })
   }
@@ -89,7 +110,7 @@ const App = ({}) => {
 
   const getItemVariation = e => {
     // FIXME: have to search item with variant options first before items with no variants like orange hat
-    //e.preventDefault()
+    e.preventDefault()
     itemsData.map(item => {
     // check item
       if(itemName === item.name) {
@@ -127,24 +148,34 @@ const App = ({}) => {
     <h1 className="header">Animal Crossing New Horizon Villager Stylists</h1>
     <Grid container spacing={3}>
       <Grid item xs={6}>
-        <form noValidate autoComplete="off">
-          <TextField
-            className={classes.input}
-            id="outlined-search"
-            label="Villager Name"
-            type="search"
-            variant="outlined"
-            color="secondary"
-            onChange={getVillager}
-            InputProps={{
-              endAdornment: (
-                <InputAdornment>
-                  <IconButton>
-                    <SearchIcon />
-                  </IconButton>
-                </InputAdornment>
-              )
-            }}
+        <form noValidate>
+          <Autocomplete
+            style={{ width: 300 }}
+            options={villagersData.map((option) => option.name)}
+            onChange={selectVillager}
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                className={classes.input}
+                id="outlined-search"
+                label="Villager Name"
+                type="search"
+                variant="outlined"
+                color="secondary"
+                onChange={getVillager}
+                // InputProps={{
+                //   ...params.inputProps,
+                //   endAdornment: (
+                //     <InputAdornment>
+                //       <IconButton>
+                //         <SearchIcon />
+                //       </IconButton>
+                //     </InputAdornment>
+                //   )
+                // }}
+                InputProps={{ ...params.InputProps, type: 'search' }}
+              />
+            )}
           />
         </form>
       </Grid>
