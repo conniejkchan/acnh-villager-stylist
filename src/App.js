@@ -2,13 +2,11 @@ import React, {useState} from 'react';
 import styled from 'styled-components';
 import './App.css';
 import { makeStyles } from '@material-ui/core/styles';
+import { green,red } from '@material-ui/core/colors';
 import CheckCircleRoundedIcon from '@material-ui/icons/CheckCircleRounded';
-import Button from '@material-ui/core/Button';
+import NotInterestedIcon from '@material-ui/icons/NotInterested';
 import Grid from '@material-ui/core/Grid';
-import SearchIcon from '@material-ui/icons/Search';
 import TextField from '@material-ui/core/TextField';
-import IconButton from '@material-ui/core/IconButton';
-import InputAdornment from "@material-ui/core/InputAdornment";
 import InputLabel from '@material-ui/core/InputLabel';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -91,7 +89,6 @@ const App = ({}) => {
   const selectVillager = (event, value) => {
     setVillagerName(value)
     villagersData.map(villager => {
-      console.log(value)
       if(value !== null && value.toLowerCase() === villager.name.toLowerCase()) {
         setVillagerPhoto(villager.photoImage)
         setVillagerNameColor(villager.bubbleColor)
@@ -248,6 +245,15 @@ const App = ({}) => {
           <h2 style={{color: villagerNameColor}}>{villagerName}</h2>
           <img src={villagerPhoto} />
           <h3>Likes: </h3>
+            {villagerStyles.map(style => {
+              return (
+                <>
+                  <li>
+                    {style}
+                  </li>
+                </>
+              );
+            })}
             {villagerColors.map(color => {
               return (
                 <>
@@ -257,15 +263,6 @@ const App = ({}) => {
                 </>
               );
             })}
-            {villagerStyles.map(style => {
-            return (
-              <>
-                <li>
-                  {style}
-                </li>
-              </>
-            );
-          })}
         </div>
       </Grid>
       <Grid item xs={6}>
@@ -286,10 +283,52 @@ const App = ({}) => {
         </div>
       </Grid>
     </Grid>
-    {/* // check matches between color styles */}
+    {/* // check matches between color and styles */}
     <h1 className="text">Stylists Recommendation:</h1>
-    <CheckCircleRoundedIcon color="primary" />
-  
+    <h2 className="text">
+    {villagerStyles.map(style => {
+      return (
+        <>
+          {(style === itemStyle)?
+            <>
+              <li>
+                <CheckCircleRoundedIcon style={{ color: green[500] }} />
+                Style Match~
+              </li>
+            </>
+          :
+            <>
+              <li>
+                <NotInterestedIcon style={{ color: red[500] }} />
+                Style Does NOT Match
+              </li>
+            </>
+          } 
+        </>
+      );
+    })}
+    {villagerColors.map(vColor => {
+      return(
+        <>
+          {(itemColors.includes(vColor))?
+            <>
+              <li>
+                <CheckCircleRoundedIcon style={{ color: green[500] }} />
+                Color Match~
+              </li>
+            </>
+          :
+            <>
+              <li>
+                  <NotInterestedIcon style={{ color: red[500] }} />
+                  Color Does NOT Match
+              </li>
+            </>
+          } 
+        </>
+      );
+    })}
+    </h2>
     </>
   );
 }

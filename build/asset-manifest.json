@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/acnh-villager-stylist/static/css/main.bbc9107f.chunk.css",
-    "main.js": "/acnh-villager-stylist/static/js/main.48a6fda2.chunk.js",
-    "main.js.map": "/acnh-villager-stylist/static/js/main.48a6fda2.chunk.js.map",
+    "main.css": "/acnh-villager-stylist/static/css/main.1b9ea2e9.chunk.css",
+    "main.js": "/acnh-villager-stylist/static/js/main.b04c9b01.chunk.js",
+    "main.js.map": "/acnh-villager-stylist/static/js/main.b04c9b01.chunk.js.map",
     "runtime-main.js": "/acnh-villager-stylist/static/js/runtime-main.212f0e7c.js",
     "runtime-main.js.map": "/acnh-villager-stylist/static/js/runtime-main.212f0e7c.js.map",
-    "static/js/2.63d6529b.chunk.js": "/acnh-villager-stylist/static/js/2.63d6529b.chunk.js",
-    "static/js/2.63d6529b.chunk.js.map": "/acnh-villager-stylist/static/js/2.63d6529b.chunk.js.map",
+    "static/js/2.d93e3f9b.chunk.js": "/acnh-villager-stylist/static/js/2.d93e3f9b.chunk.js",
+    "static/js/2.d93e3f9b.chunk.js.map": "/acnh-villager-stylist/static/js/2.d93e3f9b.chunk.js.map",
     "index.html": "/acnh-villager-stylist/index.html",
-    "precache-manifest.633ec1769077b50f128ce2b784c2f7db.js": "/acnh-villager-stylist/precache-manifest.633ec1769077b50f128ce2b784c2f7db.js",
+    "precache-manifest.0ff5ed9ff2fa7902e2ad1a4a956cfcf5.js": "/acnh-villager-stylist/precache-manifest.0ff5ed9ff2fa7902e2ad1a4a956cfcf5.js",
     "service-worker.js": "/acnh-villager-stylist/service-worker.js",
-    "static/css/main.bbc9107f.chunk.css.map": "/acnh-villager-stylist/static/css/main.bbc9107f.chunk.css.map",
-    "static/js/2.63d6529b.chunk.js.LICENSE.txt": "/acnh-villager-stylist/static/js/2.63d6529b.chunk.js.LICENSE.txt",
+    "static/css/main.1b9ea2e9.chunk.css.map": "/acnh-villager-stylist/static/css/main.1b9ea2e9.chunk.css.map",
+    "static/js/2.d93e3f9b.chunk.js.LICENSE.txt": "/acnh-villager-stylist/static/js/2.d93e3f9b.chunk.js.LICENSE.txt",
     "static/media/App.css": "/acnh-villager-stylist/static/media/ac-background-5.f7491e94.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.212f0e7c.js",
-    "static/js/2.63d6529b.chunk.js",
-    "static/css/main.bbc9107f.chunk.css",
-    "static/js/main.48a6fda2.chunk.js"
+    "static/js/2.d93e3f9b.chunk.js",
+    "static/css/main.1b9ea2e9.chunk.css",
+    "static/js/main.b04c9b01.chunk.js"
   ]
 }
