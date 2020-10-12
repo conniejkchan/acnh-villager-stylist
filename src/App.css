@@ -9,17 +9,6 @@ body {
   text-align: center;
 }
 
-.header {
-  text-align: center;
-}
-
-.searchVillager {
-  text-align: center;
-}
-
-.searchItem {
-  text-align: center;
-}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {

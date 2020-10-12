@@ -42,12 +42,15 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 
+//TODO: final results stylist recommendations in the middle between villager and item search
 const App = ({}) => {
+  // All the states within the application
   const [villagerName, setVillagerName] = useState('')
   const [villagerNameColor, setVillagerNameColor] = useState('')
   const [villagerPhoto, setVillagerPhoto] = useState('')
   const [villagerColors, setVillagerColors] = useState([])
   const [villagerStyles, setVillagerStyles] = useState([])
+  const [inputVillager, setInputVillager] = useState('');
 
   const[itemName, setItemName] = useState('')
   const[itemPhoto, setItemPhoto] = useState('')
@@ -56,6 +59,9 @@ const App = ({}) => {
   const[itemVariation,setItemVariation] = useState('')
   const[itemVariationList,setItemVariationList] = useState([])
   const[itemPropertyList,setItemPropertyList] = useState([])
+  const [inputItem, setInputItem] = useState('');
+
+  const[showDetails,setShowDetails] = useState(false)
   
   // filter to only clothes items
   const clothesData = itemsData.filter(
@@ -109,6 +115,9 @@ const App = ({}) => {
       if(e.target.value.toLowerCase() === item.name.toLowerCase()) {
         setItemName(item.name)
         setItemStyle(item.style)
+        // clear item properties here
+        setItemPhoto('')
+        setItemColors([])
         const variants = item.variants
         setItemPropertyList(variants)
         const variantList = []
@@ -116,14 +125,13 @@ const App = ({}) => {
           variantList.push(variant.variation)
         })
         setItemVariationList(variantList)
-        // value is null
-        console.log(itemVariationList)
       }
     })
   }
 
   const selectItem = (event,value) => {
-    setItemName(value)
+    console.log(event.target.value)
+    console.log(value)
     clothesData.map(item => {
       if(value !== null && value.toLowerCase() === item.name.toLowerCase()) {
         const variants = item.variants
@@ -132,44 +140,35 @@ const App = ({}) => {
         variants.map(variant => {
           variantList.push(variant.variation)
         })
+        setItemName(item.name)
         setItemVariationList(variantList)
         setItemStyle(item.style)
-        // value is undefined
-        console.log(itemVariationList)
+        // clear item properties here
+        setItemPhoto('')
+        setItemColors([])
       }
       else if(value === null) {
         setItemVariation('')
         setItemPhoto('')
         setItemStyle('')
+        setShowDetails(false)
       }
     })
   }
 
   const getItemVariation = e => {
-    // FIXME: have to search item with variant options first before items with no variants like orange hat
     e.preventDefault()
     clothesData.map(item => {
     // check item
       if(itemName === item.name) {
-        // FIXME: variant list already set previously, assigns the wrong color variant and doesnt change photo
-        console.log(itemPropertyList)
         itemPropertyList.map( obj => {
           // reset selection
-
           if(e.target.value === obj.variation || obj.variation == null) {
             setItemVariation(e.target.value)
             setItemPhoto(obj.closetImage)
             setItemColors(obj.colors)
-            // also set up colors fields        
+            setShowDetails(true) 
           }
-          // else if(obj.variation == null){
-          //   // only one variation
-          //   // disable the variation select
-          //   setItemVariation(e.target.value)
-          //   setItemPhoto(obj.closetImage)
-          //   setItemColors(obj.colors)
-          // }
-
         })
       }
     })
@@ -178,15 +177,20 @@ const App = ({}) => {
 
   return (
     <>
-    <h1 className="text">Animal Crossing New Horizon Villager Stylists</h1>
+    <h1 className="text">Animal Crossing New Horizon Villager Stylist</h1>
     <h3 className="text">Each villager has their favorite 2 clothing styles and 2 colors they prefer. Use this app to help verify if the gift aligns with the villager's clothing style and color preferences.</h3>
     <Grid container spacing={3}>
       <Grid item xs={6}>
         <form noValidate>
           <Autocomplete
+            freeSolo
             style={{ width: 300 }}
             options={villagersData.map((option) => option.name)}
             onChange={selectVillager}
+            inputValue={inputVillager}
+            onInputChange={(event, newInputVillager) => {
+              setInputVillager(newInputVillager);
+            }}
             renderInput={(params) => (
               <TextField
                 {...params}
@@ -206,9 +210,14 @@ const App = ({}) => {
       <Grid item xs={3}>
         <form noValidate>
         <Autocomplete
+            freeSolo
             style={{ width: 300 }}
             options={clothesData.map((option) => option.name)}
             onChange={selectItem}
+            inputValue={inputItem}
+            onInputChange={(event, newInputItem) => {
+              setInputItem(newInputItem);
+            }}
             renderInput={(params) => (
               <TextField
                 {...params}
@@ -241,10 +250,13 @@ const App = ({}) => {
         </FormControl>
       </Grid>
       <Grid item xs={6}>
-        <div className="searchVillager">
+        <div className="text">
           <h2 style={{color: villagerNameColor}}>{villagerName}</h2>
           <img src={villagerPhoto} />
-          <h3>Likes: </h3>
+            {(villagerStyles === undefined || villagerStyles.length === 0)?
+                <></>
+                :<h3>Likes: </h3>
+            }       
             {villagerStyles.map(style => {
               return (
                 <>
@@ -266,69 +278,79 @@ const App = ({}) => {
         </div>
       </Grid>
       <Grid item xs={6}>
-        <div className="searchItem">
-          <h2>Item: {itemName}</h2>
-          <img src={itemPhoto} />
-          <h3>Style: {itemStyle}</h3>
-          <h3>Colors:</h3>
-          {itemColors.map(color => {
-              return (
-                <>
-                  <li>
-                    {color}
-                  </li>
-                </>
-              );
-            })}
-        </div>
+        {(itemName === "" || itemStyle === "" || itemColors.length === 0)?
+          <></>
+          :
+            <div className="text">
+              <h2>Item: {itemName}</h2>
+                <img src={itemPhoto} />
+                <h3>Style: {itemStyle}</h3>
+                <h3>Colors:</h3>
+                {itemColors.map(color => {
+                    return (
+                      <>
+                        <li>
+                          {color}
+                        </li>
+                      </>
+                    );
+                  })}
+            </div>
+          }
       </Grid>
     </Grid>
-    {/* // check matches between color and styles */}
-    <h1 className="text">Stylists Recommendation:</h1>
-    <h2 className="text">
-    {villagerStyles.map(style => {
-      return (
+    {/* check matches between color and styles */}
+    {(showDetails === false)?
+        <></> :
         <>
-          {(style === itemStyle)?
+        <h1 className="text">Stylist Recommendation:</h1>
+        <h2 className="text">
+      
+        {villagerStyles.map(style => {
+          return (
             <>
-              <li>
-                <CheckCircleRoundedIcon style={{ color: green[500] }} />
-                Style Match~
-              </li>
+              {(style === itemStyle)?
+                <>
+                  <li>
+                    <CheckCircleRoundedIcon style={{ color: green[500] }} />
+                    Style Match ~ {itemStyle}
+                  </li>
+                </>
+              :
+                <>
+                  <li>
+                    <NotInterestedIcon style={{ color: red[500] }} />
+                    Style Does NOT Match
+                  </li>
+                </>
+              } 
             </>
-          :
+          );
+        })}
+        {villagerColors.map(vColor => {
+          return(
             <>
-              <li>
-                <NotInterestedIcon style={{ color: red[500] }} />
-                Style Does NOT Match
-              </li>
+              {(itemColors.includes(vColor))?
+                <>
+                  <li>
+                    <CheckCircleRoundedIcon style={{ color: green[500] }} />
+                    Color Match ~ {vColor}
+                  </li>
+                </>
+              :
+                <>
+                  <li>
+                      <NotInterestedIcon style={{ color: red[500] }} />
+                      Color Does NOT Match
+                  </li>
+                </>
+              } 
             </>
-          } 
+          );
+        })}
+        </h2>
         </>
-      );
-    })}
-    {villagerColors.map(vColor => {
-      return(
-        <>
-          {(itemColors.includes(vColor))?
-            <>
-              <li>
-                <CheckCircleRoundedIcon style={{ color: green[500] }} />
-                Color Match~
-              </li>
-            </>
-          :
-            <>
-              <li>
-                  <NotInterestedIcon style={{ color: red[500] }} />
-                  Color Does NOT Match
-              </li>
-            </>
-          } 
-        </>
-      );
-    })}
-    </h2>
+        }
     </>
   );
 }
